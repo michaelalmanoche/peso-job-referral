@@ -1,9 +1,9 @@
 import React from 'react'
 
-function user() {
+function page() {
   return (
     <div>page</div>
   )
 }
 
-export default user
+export default page

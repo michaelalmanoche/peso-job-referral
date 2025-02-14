@@ -1,16 +1,39 @@
-"use client";
+"use client"
 import Link from "next/link";
 import { useState } from "react";
+import axios from "axios";
 import Footer from "../components/footer/page";
 import logo from "../images/PESO LOGO NEW.png";
 import Image from 'next/image';
 
 const LoginPage = () => {
+  const [formData, setFormData] = useState({ email: "", password: "" });
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [error, setError] = useState("");
 
   const togglePasswordVisibility = (e: React.MouseEvent) => {
     e.preventDefault(); // Prevents page reload
     setPasswordVisible(!passwordVisible);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("/api/login", formData);
+      console.log("Login successful", response.data);
+      // Save the token to local storage or cookies
+      const data = response.data as { token: string };
+      localStorage.setItem("token", data.token);
+      // Redirect to a protected page
+      window.location.href = "/dashboard";
+    } catch (error) {
+      console.error("Login failed", error);
+      setError("Invalid email or password");
+    }
   };
 
   return (
@@ -27,15 +50,27 @@ const LoginPage = () => {
           <h2 className="text-2xl font-semibold text-left">Account Log In</h2>
           <p className="text-left text-gray-600 mb-4">Fill out the information below in order to access your account.</p>
           
-          <form className="mt-4" method="POST" action="/init_login">
+          {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
+          
+          <form className="mt-4" onSubmit={handleSubmit}>
             <div className="mb-4">
-              <input type="email" placeholder="Email Address" name="email" required className="w-full p-3 border-2 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+              <input
+                type="email"
+                placeholder="Email Address"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                className="w-full p-3 border-2 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
             </div>
             <div className="flex items-center border-2 border-gray-300 rounded-md overflow-hidden focus-within:ring-2 focus-within:ring-blue-500">
               <input
                 type={passwordVisible ? "text" : "password"}
                 placeholder="Password"
                 name="password"
+                value={formData.password}
+                onChange={handleChange}
                 required
                 className="flex-grow p-3 text-gray-900 placeholder-gray-400 focus:outline-none"
               />
