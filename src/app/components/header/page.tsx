@@ -70,13 +70,13 @@ const LandingPage: React.FC = () => {
             </button>
             <div className="absolute bg-white text-black mt-2 rounded-md shadow-lg w-40 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-in-out z-50">
               <a
-                href="/users/jobseeker/Job_Seeker_Registration"
+                href="/users/Job_Seeker_Registration"
                 className="flex items-center px-4 py-2 hover:bg-gray-200"
               >
                 <span className="mr-2">👤</span> Job Seekers
               </a>
               <a
-                href="/users/employer/Employer_Registration"
+                href="/users/Employer_Registration"
                 className="flex items-center px-4 py-2 hover:bg-gray-200"
               >
                 <span className="mr-2">🏢</span> Employers

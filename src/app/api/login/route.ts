@@ -18,25 +18,30 @@ export async function POST(req: NextRequest) {
   try {
     const { email, password } = await req.json();
 
-    // Check if user exists
-    const [rows]: any = await db.query('SELECT * FROM job_seekers WHERE email = ?', [email]);
+    let query = 'SELECT * FROM job_seekers WHERE email = ?';
+    let userType = 'job_seeker';
+    let [rows]: any = await db.query(query, [email]);
+
+    if (rows.length === 0) {
+      query = 'SELECT * FROM employer_register WHERE email = ?';
+      userType = 'employer';
+      [rows] = await db.query(query, [email]);
+    }
+
     if (rows.length === 0) {
       return NextResponse.json({ success: false, error: 'Invalid email or password' }, { status: 401 });
     }
 
     const user = rows[0];
 
-    // Check password
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return NextResponse.json({ success: false, error: 'Invalid email or password' }, { status: 401 });
     }
 
-    // Generate JWT token
-    const token = jwt.sign({ id: user.id, email: user.email }, SECRET_KEY, { expiresIn: '1h' });
+    const token = jwt.sign({ id: user.id, email: user.email, user_type: userType }, SECRET_KEY, { expiresIn: '1h' });
 
-    return NextResponse.json({ success: true, token }, { status: 200 });
-
+    return NextResponse.json({ success: true, token, user_type: userType }, { status: 200 });
   } catch (error) {
     console.error(error);
     return NextResponse.json({ success: false, error: 'Login failed' }, { status: 500 });

@@ -12,11 +12,11 @@ const LoginPage = () => {
   const [error, setError] = useState("");
 
   const togglePasswordVisibility = (e: React.MouseEvent) => {
-    e.preventDefault(); // Prevents page reload
+    e.preventDefault();
     setPasswordVisible(!passwordVisible);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -24,12 +24,13 @@ const LoginPage = () => {
     e.preventDefault();
     try {
       const response = await axios.post("/api/login", formData);
-      console.log("Login successful", response.data);
-      // Save the token to local storage or cookies
-      const data = response.data as { token: string };
+      const data = response.data as { token: string, user_type: string };
       localStorage.setItem("token", data.token);
-      // Redirect to a protected page
-      window.location.href = "/dashboard";
+      if (data.user_type === 'employer') {
+        window.location.href = "/employer-dashboard";
+      } else if (data.user_type === 'job_seeker') {
+        window.location.href = "/jobseeker";
+      }
     } catch (error) {
       console.error("Login failed", error);
       setError("Invalid email or password");
@@ -38,13 +39,11 @@ const LoginPage = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-gray-900 to-blue-900 text-gray-900">
-      {/* Header */}
       <header className="bg-gray-900 text-white py-4 px-6 flex items-center justify-center">
         <Image src={logo} alt="logo" className="w-[4.3rem] h-[4.3rem] mr-4" />
         <h3 className="text-2xl font-semibold">PESO JobPortal</h3>
       </header>
 
-      {/* Login Form */}
       <div className="flex flex-col items-center justify-center flex-grow px-4 mt-14">
         <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-md">
           <h2 className="text-2xl font-semibold text-left">Account Log In</h2>

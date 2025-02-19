@@ -127,26 +127,14 @@ export default function JobSeekerRegistration() {
     educational_background: {
       elementary: { school: "", year_graduated: "", undergraduate: "", level: "", year_last_attended: "", awards: "" },
       secondary: { school: "", year_graduated: "", undergraduate: "", level: "", year_last_attended: "", awards: "" },
-      tertiary: {
-        school: "",
-        course: "",
-        year_graduated: "",
-        undergraduate: "",
-        level: "",
-        year_last_attended: "",
-        awards: "",
-      },
+      tertiary: { school: "",course: "",year_graduated: "", undergraduate: "",level: "", year_last_attended: "",awards: "", },
       graduate: { school: "", year_graduated: "", undergraduate: "", level: "", year_last_attended: "", awards: "" },
     },
     certifications: [
       { course: "", date_from: "", date_to: "", institution: "", certificate: "" },
-      { course: "", date_from: "", date_to: "", institution: "", certificate: "" },
-      { course: "", date_from: "", date_to: "", institution: "", certificate: "" },
     ],
     eligibility: { civil_service: "", exam_date: "", professional_license: "", valid_until: "" },
     work_experience: [
-      { company: "", address: "", position: "", date_from: "", date_to: "", status: "" },
-      { company: "", address: "", position: "", date_from: "", date_to: "", status: "" },
       { company: "", address: "", position: "", date_from: "", date_to: "", status: "" },
     ],
     other_skills: [],
@@ -219,101 +207,19 @@ export default function JobSeekerRegistration() {
               <h3 className="text-xl font-semibold text-white">Personal Information</h3>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <InputField
-                label="LAST NAME"
-                name="last_name"
-                value={formData.last_name}
-                onChange={handleChange}
-                placeholder="Enter your last name"
-              />
-              <InputField
-                label="FIRST NAME"
-                name="first_name"
-                value={formData.first_name}
-                onChange={handleChange}
-                placeholder="Enter your first name"
-              />
-              <InputField
-                label="MIDDLE NAME"
-                name="middle_name"
-                value={formData.middle_name}
-                onChange={handleChange}
-                placeholder="Enter your middle name"
-              />
-              <SelectField
-                label="SUFFIX"
-                name="suffix"
-                value={formData.suffix}
-                onChange={handleChange}
-                options={["None", "Jr.", "Sr.", "III"]}
-              />
-              <InputField
-                label="DATE OF BIRTH"
-                name="date_of_birth"
-                value={formData.date_of_birth}
-                onChange={handleChange}
-                type="date"
-              />
-              <InputField
-                label="PLACE OF BIRTH"
-                name="place_of_birth"
-                value={formData.place_of_birth}
-                onChange={handleChange}
-                placeholder="Enter your birth place"
-              />
-              <SelectField
-                label="SEX"
-                name="sex"
-                value={formData.sex}
-                onChange={handleChange}
-                options={["Select", "Male", "Female"]}
-              />
-              <InputField
-                label="Height(cm)"
-                name="height_cm"
-                value={formData.height_cm}
-                onChange={handleChange}
-                placeholder="In centimeter"
-                className="w-32"
-              />
-              <InputField
-                label="Contact Number"
-                name="contact_number"
-                value={formData.contact_number}
-                onChange={handleChange}
-                placeholder="eg. 09112233445"
-                className="w-48"
-              />
-              <SelectField
-                label="CIVIL STATUS"
-                name="civil_status"
-                value={formData.civil_status}
-                onChange={handleChange}
-                options={["Select", "Single", "Married", "Widowed", "Separated"]}
-              />
-              <InputField
-                label="EMAIL"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                type="email"
-                placeholder="Enter your email address"
-              />
-              <InputField
-                label="Password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                type="password"
-              />
-              <InputField
-                label="TIN NUMBER"
-                name="tin_number"
-                value={formData.tin_number}
-                onChange={handleChange}
-                placeholder="xxx-xxx-xxx-xxx"
-                className="w-48"
-              />
+              <InputField label="LAST NAME" name="last_name" value={formData.last_name} onChange={handleChange} placeholder="Enter your last name" />
+              <InputField label="FIRST NAME" name="first_name" value={formData.first_name} onChange={handleChange} placeholder="Enter your first name" />
+              <InputField label="MIDDLE NAME" name="middle_name" value={formData.middle_name} onChange={handleChange} placeholder="Enter your middle name" />
+              <SelectField label="SUFFIX" name="suffix" value={formData.suffix} onChange={handleChange} options={["None", "Jr.", "Sr.", "III"]} />
+              <InputField label="DATE OF BIRTH" name="date_of_birth" value={formData.date_of_birth} onChange={handleChange} type="date" />
+              <InputField label="PLACE OF BIRTH" name="place_of_birth" value={formData.place_of_birth} onChange={handleChange} placeholder="Enter your birth place" />
+              <SelectField label="SEX" name="sex" value={formData.sex} onChange={handleChange} options={["Select", "Male", "Female"]} />
+              <InputField label="Height(cm)" name="height_cm" value={formData.height_cm} onChange={handleChange} placeholder="In centimeter" className="w-32" />
+              <InputField label="Contact Number" name="contact_number" value={formData.contact_number} onChange={handleChange} placeholder="eg. 09112233445" className="w-48" />
+              <SelectField label="CIVIL STATUS" name="civil_status" value={formData.civil_status} onChange={handleChange} options={["Select", "Single", "Married", "Widowed", "Separated"]} />
+              <InputField label="EMAIL" name="email" value={formData.email} onChange={handleChange} type="email" placeholder="Enter your email address" />
+              <InputField label="Password" name="password" value={formData.password} onChange={handleChange} type="password" />
+              <InputField label="TIN NUMBER" name="tin_number" value={formData.tin_number} onChange={handleChange} placeholder="xxx-xxx-xxx-xxx" className="w-48" />
             </div>
             <div className="mt-4">
               <label className="block text-sm font-medium text-gray-700 mb-2">Disability</label>
@@ -332,12 +238,7 @@ export default function JobSeekerRegistration() {
                   "Rare Disease",
                 ].map((disability) => (
                   <label key={disability} className="flex items-center space-x-2">
-                    <input
-                      type="checkbox"
-                      checked={formData.disabilities.includes(disability)}
-                      onChange={(e) => handleCheckboxChange("disabilities", disability, e.target.checked)}
-                      className="form-checkbox"
-                    />
+                    <input type="checkbox" checked={formData.disabilities.includes(disability)} onChange={(e) => handleCheckboxChange("disabilities", disability, e.target.checked)}className="form-checkbox"/>
                     <span className="text-sm">{disability}</span>
                   </label>
                 ))}
@@ -346,13 +247,7 @@ export default function JobSeekerRegistration() {
                 <label htmlFor="other_disability" className="block text-sm font-medium text-gray-700">
                   Other, specify:
                 </label>
-                <input
-                  type="text"
-                  id="other_disability"
-                  name="other_disability"
-                  onChange={(e) => handleCheckboxChange("disabilities", e.target.value, true)}
-                  className="w-64 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                />
+                <input type="text" id="other_disability" name="other_disability" onChange={(e) => handleCheckboxChange("disabilities", e.target.value, true)} className="w-64 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"/>
               </div>
             </div>
           </section>
@@ -363,56 +258,13 @@ export default function JobSeekerRegistration() {
               <h3 className="text-xl font-semibold text-white">Employment Status</h3>
             </div>
             <div className="space-y-4">
-              <RadioGroup
-                label="Employment Status"
-                name="employment_status"
-                value={formData.employment_status}
-                onChange={handleChange}
-                options={["Employed", "Unemployed"]}
-              />
-              <RadioGroup
-                label="Are you actively looking for work?"
-                name="actively_looking"
-                value={formData.actively_looking}
-                onChange={handleChange}
-                options={["Yes", "No"]}
-              />
-              <RadioGroup
-                label="Willing to work immediately?"
-                name="willing_to_work"
-                value={formData.willing_to_work}
-                onChange={handleChange}
-                options={["Yes", "No"]}
-              />
-              <InputField
-                label="If no, when?"
-                name="availability_date"
-                value={formData.availability_date}
-                onChange={handleChange}
-                className="w-48"
-              />
-              <InputField
-                label="How long have you been looking for work?"
-                name="looking_duration"
-                value={formData.looking_duration}
-                onChange={handleChange}
-                placeholder="in months"
-                className="w-32"
-              />
-              <RadioGroup
-                label="Are you a 4Ps beneficiary?"
-                name="is_4ps_beneficiary"
-                value={formData.is_4ps_beneficiary}
-                onChange={handleChange}
-                options={["Yes", "No"]}
-              />
-              <InputField
-                label="Household ID No."
-                name="household_id"
-                value={formData.household_id}
-                onChange={handleChange}
-                className="w-48"
-              />
+              <RadioGroup label="Employment Status" name="employment_status" value={formData.employment_status}onChange={handleChange} options={["Employed", "Unemployed"]} />
+              <RadioGroup label="Are you actively looking for work?" name="actively_looking" value={formData.actively_looking}onChange={handleChange}  options={["Yes", "No"]} />
+              <RadioGroup label="Willing to work immediately?" name="willing_to_work" value={formData.willing_to_work} onChange={handleChange}  options={["Yes", "No"]} />
+              <InputField label="If no, when?"name="availability_date"value={formData.availability_date}onChange={handleChange} className="w-48"/>
+              <InputField label="How long have you been looking for work?" name="looking_duration" value={formData.looking_duration}onChange={handleChange}  placeholder="in months" className="w-32"/>
+              <RadioGroup label="Are you a 4Ps beneficiary?" name="is_4ps_beneficiary" value={formData.is_4ps_beneficiary} onChange={handleChange} options={["Yes", "No"]} />
+              <InputField label="Household ID No."name="household_id" value={formData.household_id} onChange={handleChange} className="w-48"/>
             </div>
           </section>
 
@@ -426,14 +278,8 @@ export default function JobSeekerRegistration() {
       <label className="block text-sm font-medium text-gray-700 mb-2">PREFERRED OCCUPATION</label>
       {[1, 2, 3, 4].map((num) => (
         <div key={num} className="space-y-1 mb-2">
-          <label
-            htmlFor={`preferred_occupation_${num}`}
-            className="block text-sm font-medium text-gray-700"
-          >{`${num}.`}</label>
-          <input
-            type="text"
-            id={`preferred_occupation_${num}`}
-            name={`preferred_occupations[${num - 1}]`}
+          <label htmlFor={`preferred_occupation_${num}`} className="block text-sm font-medium text-gray-700">{`${num}.`}</label>
+          <input  type="text" id={`preferred_occupation_${num}`} name={`preferred_occupations[${num - 1}]`}
             onChange={(e) => {
               const newPreferredOccupations = [...formData.preferred_occupations];
               newPreferredOccupations[num - 1] = e.target.value;
@@ -443,40 +289,14 @@ export default function JobSeekerRegistration() {
               }));
             }}
             value={formData.preferred_occupations[num - 1]}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-          />
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"/>
         </div>
       ))}
     </div>
-    <RadioGroup
-      label="PREFERRED WORK LOCATION"
-      name="work_location"
-      value={formData.work_location}
-      onChange={handleChange}
-      options={["Local", "Overseas"]}
-    />
-    <InputField
-      label="Expected Salary (Range):"
-      name="expected_salary"
-      value={formData.expected_salary}
-      onChange={handleChange}
-      className="w-48"
-    />
-    <InputField
-      label="Passport No.:"
-      name="passport_no"
-      value={formData.passport_no}
-      onChange={handleChange}
-      className="w-48"
-    />
-    <InputField
-      label="Expiry Date:"
-      name="passport_expiry"
-      value={formData.passport_expiry}
-      onChange={handleChange}
-      type="date"
-      className="w-48"
-    />
+    <RadioGroup label="PREFERRED WORK LOCATION" name="work_location" value={formData.work_location} onChange={handleChange} options={["Local", "Overseas"]} />
+    <InputField  label="Expected Salary (Range):"name="expected_salary" value={formData.expected_salary} onChange={handleChange} className="w-48" />
+    <InputField label="Passport No.:" name="passport_no" value={formData.passport_no} onChange={handleChange} className="w-48" />
+    <InputField label="Expiry Date:" name="passport_expiry"value={formData.passport_expiry} onChange={handleChange} type="date" className="w-48" />
   </div>
 </section>
 
@@ -501,8 +321,7 @@ export default function JobSeekerRegistration() {
                     <td className="p-2">{lang}</td>
                     {["read", "write", "speak", "understand"].map((skill) => (
                       <td key={skill} className="p-2 text-center">
-                        <input
-                          type="checkbox"
+                        <input type="checkbox"
                           checked={
                             formData.languages[lang.toLowerCase() as keyof typeof formData.languages][
                               skill as keyof (typeof formData.languages)["english"]
@@ -539,58 +358,19 @@ export default function JobSeekerRegistration() {
     <div key={level} className="mb-6 last:mb-0">
       <h4 className="text-lg font-medium mb-3">{level.toUpperCase()}</h4>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <InputField
-          label="School"
-          name={`${level}.school`}
-          value={formData.educational_background[level as keyof typeof formData.educational_background].school}
-          onChange={(e) => handleNestedChange("educational_background", `${level}.school`, e.target.value)}
-        />
+        <InputField label="School" name={`${level}.school`}value={formData.educational_background[level as keyof typeof formData.educational_background].school} onChange={(e) => handleNestedChange("educational_background", `${level}.school`, e.target.value)}/>
         {level === "tertiary" && (
-          <InputField
-            label="Course"
-            name={`${level}.course`}
-            value={(formData.educational_background[level as keyof typeof formData.educational_background] as any).course}
-            onChange={(e) => handleNestedChange("educational_background", `${level}.course`, e.target.value)}
-          />
-        )}
-        <InputField
-          label="Year graduated"
-          name={`${level}.year_graduated`}
-          value={formData.educational_background[level as keyof typeof formData.educational_background].year_graduated}
-          onChange={(e) => handleNestedChange("educational_background", `${level}.year_graduated`, e.target.value)}
-          className="w-32"
-        />
+          <InputField label="Course" name={`${level}.course`} value={(formData.educational_background[level as keyof typeof formData.educational_background] as any).course} onChange={(e) => handleNestedChange("educational_background", `${level}.course`, e.target.value)}/> )}
+        <InputField label="Year graduated"  name={`${level}.year_graduated`} value={formData.educational_background[level as keyof typeof formData.educational_background].year_graduated} onChange={(e) => handleNestedChange("educational_background", `${level}.year_graduated`, e.target.value)}className="w-32" />
         <div className="space-y-1">
           <label className="block text-sm font-medium text-gray-700">Are you an undergraduate?</label>
           <div className="flex space-x-4">
-            <RadioGroup
-              name={`${level}.undergraduate`}
-              value={formData.educational_background[level as keyof typeof formData.educational_background].undergraduate}
-              onChange={(e) => handleNestedChange("educational_background", `${level}.undergraduate`, e.target.value)}
-              options={["Yes", "No"]}
-              label=""
-            />
+            <RadioGroup name={`${level}.undergraduate`} value={formData.educational_background[level as keyof typeof formData.educational_background].undergraduate} onChange={(e) => handleNestedChange("educational_background", `${level}.undergraduate`, e.target.value)} options={["Yes", "No"]}label="" />
           </div>
         </div>
-        <InputField
-          label="What Level?"
-          name={`${level}.level`}
-          value={formData.educational_background[level as keyof typeof formData.educational_background].level}
-          onChange={(e) => handleNestedChange("educational_background", `${level}.level`, e.target.value)}
-        />
-        <InputField
-          label="Year Last Attended"
-          name={`${level}.year_last_attended`}
-          value={formData.educational_background[level as keyof typeof formData.educational_background].year_last_attended}
-          onChange={(e) => handleNestedChange("educational_background", `${level}.year_last_attended`, e.target.value)}
-          className="w-32"
-        />
-        <InputField
-          label="Awards Received"
-          name={`${level}.awards`}
-          value={formData.educational_background[level as keyof typeof formData.educational_background].awards}
-          onChange={(e) => handleNestedChange("educational_background", `${level}.awards`, e.target.value)}
-        />
+        <InputField label="What Level?" name={`${level}.level`} value={formData.educational_background[level as keyof typeof formData.educational_background].level} onChange={(e) => handleNestedChange("educational_background", `${level}.level`, e.target.value)}/>
+        <InputField label="Year Last Attended" name={`${level}.year_last_attended`} value={formData.educational_background[level as keyof typeof formData.educational_background].year_last_attended} onChange={(e) => handleNestedChange("educational_background", `${level}.year_last_attended`, e.target.value)}className="w-32"/>
+        <InputField label="Awards Received" name={`${level}.awards`} value={formData.educational_background[level as keyof typeof formData.educational_background].awards} onChange={(e) => handleNestedChange("educational_background", `${level}.awards`, e.target.value)} />
       </div>
     </div>
   ))}
@@ -601,44 +381,15 @@ export default function JobSeekerRegistration() {
             <div className="-mt-6 -mx-6 px-6 pb-2 py-4 mb-4 rounded-t-lg bg-gray-500">
               <h3 className="text-xl font-semibold text-white">Certification/Training</h3>
             </div>
-            {[0, 1, 2].map((index) => (
+            {formData.certifications.map((certification, index) => (
               <div key={index} className="mb-6 last:mb-0">
-                <InputField
-                  label="Training/Vocational Course"
-                  name={`certifications[${index}].course`}
-                  value={formData.certifications[index].course}
-                  onChange={(e: { target: { value: any } }) => handleArrayChange(index, "certifications", { course: e.target.value })}
-                />
+                <InputField label="Training/Vocational Course" name={`certifications[${index}].course`} value={certification.course} onChange={(e: { target: { value: any } }) => handleArrayChange(index, "certifications", { course: e.target.value })}/>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
-                  <InputField
-                    label="Date From"
-                    name={`certifications[${index}].date_from`}
-                    value={formData.certifications[index].date_from}
-                    onChange={(e: { target: { value: any } }) => handleArrayChange(index, "certifications", { date_from: e.target.value })}
-                    type="date"
-                    className="w-48"
-                  />
-                  <InputField
-                    label="Date To"
-                    name={`certifications[${index}].date_to`}
-                    value={formData.certifications[index].date_to}
-                    onChange={(e: { target: { value: any } }) => handleArrayChange(index, "certifications", { date_to: e.target.value })}
-                    type="date"
-                    className="w-48"
-                  />
+                  <InputField label="Date From" name={`certifications[${index}].date_from`} value={certification.date_from} onChange={(e: { target: { value: any } }) => handleArrayChange(index, "certifications", { date_from: e.target.value })} type="date" className="w-48" />
+                  <InputField label="Date To" name={`certifications[${index}].date_to`} value={certification.date_to} onChange={(e: { target: { value: any } }) => handleArrayChange(index, "certifications", { date_to: e.target.value })} type="date" className="w-48" />
                 </div>
-                <InputField
-                  label="Training Institution"
-                  name={`certifications[${index}].institution`}
-                  value={formData.certifications[index].institution}
-                  onChange={(e: { target: { value: any } }) => handleArrayChange(index, "certifications", { institution: e.target.value })}
-                />
-                <InputField
-                  label="Certificates Received"
-                  name={`certifications[${index}].certificate`}
-                  value={formData.certifications[index].certificate}
-                  onChange={(e: { target: { value: any } }) => handleArrayChange(index, "certifications", { certificate: e.target.value })}
-                />
+                <InputField label="Training Institution" name={`certifications[${index}].institution`} value={certification.institution} onChange={(e: { target: { value: any } }) => handleArrayChange(index, "certifications", { institution: e.target.value })}/>
+                <InputField label="Certificates Received" name={`certifications[${index}].certificate`} value={certification.certificate} onChange={(e: { target: { value: any } }) => handleArrayChange(index, "certifications", { certificate: e.target.value })} />
               </div>
             ))}
           </section>
@@ -649,36 +400,10 @@ export default function JobSeekerRegistration() {
               <h3 className="text-xl font-semibold text-white">Eligibility/License</h3>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <SelectField
-                label="ELIGIBILITY(Civil Service)"
-                name="eligibility.civil_service"
-                value={formData.eligibility.civil_service}
-                onChange={(e: { target: { value: string } }) => handleNestedChange("eligibility", "civil_service", e.target.value)}
-                options={["Select", "Option 1", "Option 2"]}
-              />
-              <InputField
-                label="Date of Examination"
-                name="eligibility.exam_date"
-                value={formData.eligibility.exam_date}
-                onChange={(e: { target: { value: string } }) => handleNestedChange("eligibility", "exam_date", e.target.value)}
-                type="date"
-                className="w-48"
-              />
-              <SelectField
-                label="PROFESSIONAL LICENSE(PRC)"
-                name="eligibility.professional_license"
-                value={formData.eligibility.professional_license}
-                onChange={(e: { target: { value: string } }) => handleNestedChange("eligibility", "professional_license", e.target.value)}
-                options={["Select", "Option 1", "Option 2"]}
-              />
-              <InputField
-                label="Valid Until"
-                name="eligibility.valid_until"
-                value={formData.eligibility.valid_until}
-                onChange={(e: { target: { value: string } }) => handleNestedChange("eligibility", "valid_until", e.target.value)}
-                type="date"
-                className="w-48"
-              />
+              <SelectField label="ELIGIBILITY(Civil Service)" name="eligibility.civil_service" value={formData.eligibility.civil_service} onChange={(e: { target: { value: string } }) => handleNestedChange("eligibility", "civil_service", e.target.value)} options={["Select", "Option 1", "Option 2"]} />
+              <InputField label="Date of Examination" name="eligibility.exam_date" value={formData.eligibility.exam_date} onChange={(e: { target: { value: string } }) => handleNestedChange("eligibility", "exam_date", e.target.value)} type="date"className="w-48" />
+              <SelectField label="PROFESSIONAL LICENSE(PRC)"  name="eligibility.professional_license" value={formData.eligibility.professional_license} onChange={(e: { target: { value: string } }) => handleNestedChange("eligibility", "professional_license", e.target.value)} options={["Select", "Option 1", "Option 2"]} />
+              <InputField label="Valid Until" name="eligibility.valid_until" value={formData.eligibility.valid_until} onChange={(e: { target: { value: string } }) => handleNestedChange("eligibility", "valid_until", e.target.value)}type="date" className="w-48" />
             </div>
           </section>
 
@@ -687,51 +412,16 @@ export default function JobSeekerRegistration() {
             <div className="-mt-6 -mx-6 px-6 pb-2 py-4 mb-4 rounded-t-lg bg-gray-500">
               <h3 className="text-xl font-semibold text-white">Work Experience</h3>
             </div>
-            {[0, 1, 2].map((index) => (
+            {formData.work_experience.map((experience, index) => (
               <div key={index} className="mb-6 last:mb-0 border-b pb-6">
-                <InputField
-                  label="Company Name"
-                  name={`work_experience[${index}].company`}
-                  value={formData.work_experience[index].company}
-                  onChange={(e: { target: { value: any } }) => handleArrayChange(index, "work_experience", { company: e.target.value })}
-                />
-                <InputField
-                  label="Address"
-                  name={`work_experience[${index}].address`}
-                  value={formData.work_experience[index].address}
-                  onChange={(e: { target: { value: any } }) => handleArrayChange(index, "work_experience", { address: e.target.value })}
-                />
-                <InputField
-                  label="Position"
-                  name={`work_experience[${index}].position`}
-                  value={formData.work_experience[index].position}
-                  onChange={(e: { target: { value: any } }) => handleArrayChange(index, "work_experience", { position: e.target.value })}
-                />
+                <InputField label="Company Name" name={`work_experience[${index}].company`} value={experience.company} onChange={(e: { target: { value: any } }) => handleArrayChange(index, "work_experience", { company: e.target.value })}/>
+                <InputField label="Address" name={`work_experience[${index}].address`} value={experience.address} onChange={(e: { target: { value: any } }) => handleArrayChange(index, "work_experience", { address: e.target.value })} />
+                <InputField label="Position" name={`work_experience[${index}].position`} value={experience.position} onChange={(e: { target: { value: any } }) => handleArrayChange(index, "work_experience", { position: e.target.value })}/>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
-                  <InputField
-                    label="Date From"
-                    name={`work_experience[${index}].date_from`}
-                    value={formData.work_experience[index].date_from}
-                    onChange={(e: { target: { value: any } }) => handleArrayChange(index, "work_experience", { date_from: e.target.value })}
-                    type="date"
-                    className="w-48"
-                  />
-                  <InputField
-                    label="Date To"
-                    name={`work_experience[${index}].date_to`}
-                    value={formData.work_experience[index].date_to}
-                    onChange={(e: { target: { value: any } }) => handleArrayChange(index, "work_experience", { date_to: e.target.value })}
-                    type="date"
-                    className="w-48"
-                  />
+                  <InputField label="Date From" name={`work_experience[${index}].date_from`} value={experience.date_from} onChange={(e: { target: { value: any } }) => handleArrayChange(index, "work_experience", { date_from: e.target.value })} type="date" className="w-48" />
+                  <InputField label="Date To" name={`work_experience[${index}].date_to`} value={experience.date_to} onChange={(e: { target: { value: any } }) => handleArrayChange(index, "work_experience", { date_to: e.target.value })} type="date" className="w-48" />
                 </div>
-                <SelectField
-                  label="STATUS"
-                  name={`work_experience[${index}].status`}
-                  value={formData.work_experience[index].status}
-                  onChange={(e: { target: { value: any } }) => handleArrayChange(index, "work_experience", { status: e.target.value })}
-                  options={["Select", "Full-time", "Part-time", "Contract"]}
-                />
+                <SelectField label="STATUS" name={`work_experience[${index}].status`} value={experience.status} onChange={(e: { target: { value: any } }) => handleArrayChange(index, "work_experience", { status: e.target.value })} options={["Select", "Full-time", "Part-time", "Contract"]} />
               </div>
             ))}
           </section>
@@ -762,12 +452,7 @@ export default function JobSeekerRegistration() {
                 "Tailoring",
               ].map((skill) => (
                 <label key={skill} className="flex items-center space-x-2">
-                  <input
-                    type="checkbox"
-                    checked={formData.other_skills.includes(skill)}
-                    onChange={(e) => handleCheckboxChange("other_skills", skill, e.target.checked)}
-                    className="form-checkbox"
-                  />
+                  <input type="checkbox"checked={formData.other_skills.includes(skill)}onChange={(e) => handleCheckboxChange("other_skills", skill, e.target.checked)} className="form-checkbox"/>
                   <span className="text-sm">{skill}</span>
                 </label>
               ))}
@@ -776,13 +461,7 @@ export default function JobSeekerRegistration() {
               <label htmlFor="other_skills" className="block text-sm font-medium text-gray-700">
                 Others:
               </label>
-              <input
-                type="text"
-                id="other_skills"
-                name="other_skills"
-                onChange={(e) => handleCheckboxChange("other_skills", e.target.value, true)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              />
+              <input type="text" id="other_skills" name="other_skills" onChange={(e) => handleCheckboxChange("other_skills", e.target.value, true)} className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"/>
             </div>
           </section>
 
@@ -798,10 +477,7 @@ export default function JobSeekerRegistration() {
               employers who have access to the Registry. I am also aware that DOLE is not obliged to seek employment on
               my behalf.
             </p>
-            <button
-              type="submit"
-              className="w-full bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-            >
+            <button type="submit" className="w-full bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50" >
               Submit
             </button>
           </section>
@@ -817,15 +493,7 @@ const InputField = ({ label, name, value, onChange, type = "text", placeholder =
     <label htmlFor={name} className="block text-sm font-medium text-gray-700">
       {label}
     </label>
-    <input
-      type={type}
-      id={name}
-      name={name}
-      value={value}
-      onChange={onChange}
-      placeholder={placeholder}
-      className={`px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${className}`}
-    />
+    <input type={type} id={name} name={name} value={value} onChange={onChange} placeholder={placeholder} className={`px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${className}`}/>
   </div>
 )
 
@@ -834,13 +502,7 @@ const SelectField = ({ label, name, value, onChange, options }: { label: string;
     <label htmlFor={name} className="block text-sm font-medium text-gray-700">
       {label}
     </label>
-    <select
-      id={name}
-      name={name}
-      value={value}
-      onChange={onChange}
-      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-    >
+    <select id={name} name={name} value={value}onChange={onChange} className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
       {options.map((option: string) => (
         <option key={option} value={option}>
           {option}
@@ -856,14 +518,7 @@ const RadioGroup = ({ label, name, value, onChange, options }: { label: string; 
     <div className="flex space-x-4">
       {options.map((option: string) => (
         <label key={option} className="flex items-center space-x-2">
-          <input
-            type="radio"
-            name={name}
-            value={option}
-            checked={value === option}
-            onChange={onChange}
-            className="form-radio"
-          />
+          <input type="radio" name={name} value={option} checked={value === option} onChange={onChange} className="form-radio" />
           <span className="text-sm">{option}</span>
         </label>
       ))}
